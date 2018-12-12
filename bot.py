@@ -1,4 +1,5 @@
 import os, discord
+import youtube_dl
 from discord.ext import commands
 import asyncio
 from itertools import cycle
@@ -21,8 +22,9 @@ async def change_playing_status():
 		current_status = next(msgs)
 		await client.change_presence(game=discord.Game(name=current_status, type = 3))
 		await asyncio.sleep(5)
-#events
+#E V E N T S ! ! !
 
+#ON_events
 @client.event
 async def on_ready():
 	print('The bot is now live.')
@@ -42,6 +44,38 @@ async def on_member_join():
 async def on_reaction_add():
 	channel = reaction.message.channel
 	await client.send_
+
+#LvL System
+@client.event
+async def on_message(message):
+	with open('users.json', 'r') as f:
+		users = json.load(f)
+
+	await update_data(users, message.author)
+	await add_experience(users, message.author, 5)
+	await level_up(users, message.author, message.channel)
+
+	with open('users.json', 'w') as f:
+		json.dump(users, f)
+
+async def update_data(users, user):
+	if not user.id in users:
+		users[user.id] = {}
+		users[user.id]['experience'] = 0
+		users[user.id]['level'] = 1
+
+async def add_experience(users, user, exp):
+	users[user.id]['experience'] += exp
+
+async def level_up(users, user, channel):
+	experience = users[user.id]['experience']
+	lvl_start = users[user.id]['level']
+	lvl_end = int(experience ** (1/4))
+
+	if lvl_start < lvl_end:
+		await client.send_message(channel, '{} has leveled up to level {}!!! Congrats {}!!!'.format(user.mention, lvl_end, user.mention))
+		users[user.id]['level'] = lvl_end
+
 
 #C O M M A N D S ! ! !
 
@@ -66,7 +100,7 @@ async def leave(ctx):
 #	player = await voice_client.create_ytdl_player(url)
 #	players[server.id] = player
 #	player.start()
-		
+
 
 #fun commands
 @client.command()
@@ -79,10 +113,19 @@ async def pong():
 	await client.say(':ping_pong: Ping!')
 	print('Command "pong" has been run.')
 
+@client.command()
+async def echo(*args):
+	output = ''
+	for word in args:
+		output +- word
+		output +- ' '
+	await client.say(output)
+
+
 
 #moderation commands
 @client.command(pass_context=True)
-async def clear(ctx, amount=100):
+async def clear(ctx, amount=1000):
 	channel = ctx.message.channel
 	messages = []
 	async for message in client.logs_from(channel, limit=int(amount) + 1):
@@ -90,6 +133,17 @@ async def clear(ctx, amount=100):
 	await client.delete_messages(messages)
 	await client.say('Messages deleted.')
 	print('Command "clear" has been run. Messages have been deleted.')
+
+@client.command(pass_context=True)
+async def mute(ctx, member: discord.Member):
+     if ctx.message.author.server_permissions.administrator or ctx.message.author.id == '194151340090327041':
+        role = discord.utils.get(member.server.roles, name='Muted')
+        await bot.add_roles(member, role)
+        embed=discord.Embed(title="User Muted!", description="**{0}** was muted by **{1}**!".format(member, ctx.message.author), color=0xff00f6)
+        await bot.say(embed=embed)
+     else:
+        embed=discord.Embed(title="Permission Denied.", description="You don't have permission to use this command.", color=0xff00f6)
+        await bot.say(embed=embed)
 
 #misc. commands
 @client.command()
