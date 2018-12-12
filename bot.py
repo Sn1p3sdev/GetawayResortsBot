@@ -1,14 +1,19 @@
 import os, discord
+import youtube_dl
 from discord.ext import commands
 import asyncio
 from itertools import cycle
 
+#settings or values
 
 TOKEN = 'NTE5NjU2NTM4MDM0NDA1Mzk3.Duifaw.Peoy1GOMWO9SCW_yQfiGKxNyWio'
 
 client = commands.Bot(command_prefix = '>')
+dClient = discord.Client()
 status = ['over Getaway Resorts', 'over iifluxi', 'over zultra500', 'over manslo', 'over iiPokiesi']
 client.remove_command('help')
+
+#cool loopy stuff
 
 async def change_playing_status():
 	await client.wait_until_ready()
@@ -17,10 +22,12 @@ async def change_playing_status():
 		current_status = next(msgs)
 		await client.change_presence(game=discord.Game(name=current_status, type = 3))
 		await asyncio.sleep(5)
+#events
 
 @client.event
 async def on_ready():
-	print('The bot is ready.')
+	print('The bot is now live.')
+	print('The bot is being hosted on Heroku.')
 
 @client.event
 async def on_message(message):
@@ -37,6 +44,9 @@ async def on_reaction_add():
 	channel = reaction.message.channel
 	await client.send_
 
+#commands
+
+#music commands
 @client.command(pass_context=True)
 async def join(ctx):
 		channel = ctx.message.author.voice.voice_channel
@@ -50,6 +60,16 @@ async def leave(ctx):
 	await voice_client.disconnect()
 	print('Left voice channel: {}'.format(voice_client))
 
+@client.command(pass_context=True)
+async def play(ctx, url):
+	server = ctx.message.server
+	voice_client = client.voice_client_in(server)
+	player = await voice_client.create_ytdl_player(url)
+	players[server.id] = player
+	player.start()
+		
+
+#fun commands
 @client.command()
 async def ping():
 	await client.say('Pong!:ping_pong: ')
@@ -60,6 +80,8 @@ async def pong():
 	await client.say(':ping_pong: Ping!')
 	print('Command "pong" has been run.')
 
+
+#moderation commands
 @client.command(pass_context=True)
 async def clear(ctx, amount=100):
 	channel = ctx.message.channel
@@ -70,6 +92,7 @@ async def clear(ctx, amount=100):
 	await client.say('Messages deleted.')
 	print('Command "clear" has been run. Messages have been deleted.')
 
+#misc. commands
 @client.command()
 async def logout():
 	await client.logout()
@@ -132,6 +155,7 @@ async def help(ctx):
 	await client.say( 'Check your DMs.')
 	await client.send_message(author, embed=embed)
 
+#announcing commands
 @client.command()
 async def test(arg1, arg2):
 	embed = discord.Embed(
