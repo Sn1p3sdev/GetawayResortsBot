@@ -2,6 +2,7 @@ import os, discord
 from discord.ext import commands
 import asyncio
 from itertools import cycle
+import json
 
 #settings or values
 
