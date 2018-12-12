@@ -52,7 +52,7 @@ async def on_member_join():
 		await update_data(users, message.author)
 
 	with open('users.json', 'w') as f:
-
+		users = json.load(f)
 
 @client.event
 async def on_message(message):
