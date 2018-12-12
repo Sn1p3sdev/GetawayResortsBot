@@ -1,5 +1,4 @@
 import os, discord
-import json
 from discord.ext import commands
 import asyncio
 from itertools import cycle
@@ -9,7 +8,6 @@ from itertools import cycle
 TOKEN = 'NTE5NjU2NTM4MDM0NDA1Mzk3.Duifaw.Peoy1GOMWO9SCW_yQfiGKxNyWio'
 
 client = commands.Bot(command_prefix = '>')
-dClient = discord.Client()
 status = ['over Getaway Resorts', 'over iifluxi', 'over zultra500', 'over manslo', 'over iiPokiesi']
 client.remove_command('help')
 
@@ -46,6 +44,16 @@ async def on_reaction_add():
 	await client.send_
 
 #LvL System
+@client.event
+async def on_member_join():
+	with open ('users.json', 'r') as f:
+		users = json.load(f)
+
+		await update_data(users, message.author)
+
+	with open('users.json', 'w') as f:
+
+
 @client.event
 async def on_message(message):
 	with open('users.json', 'r') as f:
