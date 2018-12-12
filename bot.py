@@ -44,7 +44,7 @@ async def on_reaction_add():
 	channel = reaction.message.channel
 	await client.send_
 
-#commands
+#C O M M A N D S ! ! !
 
 #music commands
 @client.command(pass_context=True)
@@ -60,13 +60,13 @@ async def leave(ctx):
 	await voice_client.disconnect()
 	print('Left voice channel: {}'.format(voice_client))
 
-@client.command(pass_context=True)
-async def play(ctx, url):
-	server = ctx.message.server
-	voice_client = client.voice_client_in(server)
-	player = await voice_client.create_ytdl_player(url)
-	players[server.id] = player
-	player.start()
+#@client.command(pass_context=True)
+#async def play(ctx, url):
+#	server = ctx.message.server
+#	voice_client = client.voice_client_in(server)
+#	player = await voice_client.create_ytdl_player(url)
+#	players[server.id] = player
+#	player.start()
 		
 
 #fun commands
