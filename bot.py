@@ -127,26 +127,26 @@ async def mute(ctx, member: discord.Member):
 
 @client.command()
 async def kick(ctx, member: discord.Member=None):
-if not member:
-	await ctx.send('{} Please specify a member.'.format(ctx.message.author.mention))
-	return
-await member.kick()
-await ctx.send(f'{member.mention} has been kicked.')
+	if not member:
+		await ctx.send('{} Please specify a member.'.format(ctx.message.author.mention))
+		return
+	await member.kick()
+	await ctx.send(f'{member.mention} has been kicked.')
 
 @client.command()
 async def ban(ctx, member: discord.Member=None):
-if not member:
-	await ctx.send('{} Please specify a member.'.format(ctx.message.author.mention))
-	return
-await member.ban()
-await ctx.send(f'{member.mention} has been banned.')
+	if not member:
+		await ctx.send('{} Please specify a member.'.format(ctx.message.author.mention))
+		return
+	await member.ban()
+	await ctx.send(f'{member.mention} has been banned.')
 
 #music commands
 @client.command(pass_context=True)
 async def join(ctx):
-		channel = ctx.message.author.voice.voice_channel
-		await client.join_voice_channel(channel)
-		print('Joined voice channel: {}'.format(channel))
+	channel = ctx.message.author.voice.voice_channel
+	await client.join_voice_channel(channel)
+	print('Joined voice channel: {}'.format(channel))
 
 @client.command(pass_context=True)
 async def leave(ctx):
