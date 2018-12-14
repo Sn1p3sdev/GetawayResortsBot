@@ -8,7 +8,7 @@ from itertools import cycle
 
 TOKEN = 'NTE5NjU2NTM4MDM0NDA1Mzk3.Duifaw.Peoy1GOMWO9SCW_yQfiGKxNyWio'
 client = commands.Bot(command_prefix = 'GR!')
-status = ['at Getaway Resorts', 'with iifluxi', 'with zultra500', 'with manslo', 'with BabySage']
+status = ['at Getaway Resorts', 'with iifluxi', 'with zultra500', 'with manslo', 'with BabySage', 'with Caleb']
 client.remove_command('help')
 
 #cool loopy stuff
