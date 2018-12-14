@@ -102,5 +102,5 @@ def setup(client):
 
 #moderation commands
 #misc. commands
-self.client.loop.create_task(change_playing_status())
-self.client.run(TOKEN)
+client.loop.create_task(change_playing_status())
+client.run(TOKEN)
