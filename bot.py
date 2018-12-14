@@ -18,7 +18,7 @@ async def change_playing_status():
 	msgs = cycle(status)
 	while not client.is_closed:
 		current_status = next(msgs)
-		await self.client.change_presence(game=discord.Game(name=current_status, type = 3))
+		await client.change_presence(game=discord.Game(name=current_status, type = 3))
 		await asyncio.sleep(5)
 #E V E N T S ! ! !
 
@@ -31,17 +31,17 @@ async def on_ready():
 @client.event
 async def on_message(message):
 	print('A user has sent a message.')
-	await self.client.process_commands(message)
+	await client.process_commands(message)
 
 @client.event
 async def on_member_join():
 	role = discord.utils.get(member.server.roles, name='Member')
-	await self.client.add_roles(member, role)
+	await client.add_roles(member, role)
 
 @client.event
 async def on_reaction_add():
 	channel = reaction.message.channel
-	await self.client.send_
+	await client.send_
 
 #LvL System
 #@self.client.event
