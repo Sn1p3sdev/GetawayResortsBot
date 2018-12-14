@@ -124,7 +124,7 @@ async def mute(ctx, member: discord.Member):
 		await bot.add_roles(member, role)
 		embed=discord.Embed(title="User Muted!", description="**{0}** was muted by **{1}**!".format(member, ctx.message.author), color=0xff00f6)
 		await bot.say(embed=embed)
- 	if !ctx.message.author.server_permissions.adminstrator:
+ 	if not ctx.message.author.server_permissions.adminstrator:
 		embed=discord.Embed(title="Permission Denied.", description="You don't have permission to use this command.", color=0xff00f6)
 		await bot.say(embed=embed)
 
