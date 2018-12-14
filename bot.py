@@ -218,6 +218,12 @@ async def help(ctx):
 	embed.add_field(name='info', value='Tells you all about the bot.', inline=True)
 	embed.add_field(name='help', value='Shows all the commands that you are able to use.', inline=True)
 	embed.add_field(name='gift', value='Shows the information about this gift.', inline=True)
+	embed.add_field(name='training', value='Used to announce trainings.', inline=True)
+	embed.add_field(name='interviews', value='Used to annouce interviews.', inline=True)
+	embed.add_field(name='apply', value='Used by guests to apply for a job here at Getaway Resorts.', inline=True)
+	embed.add_field(name='mute', value='Used by HR+ to mute members who spam or break the rules of Getaway Resorts.', inline=True)
+	embed.add_field(name='kick', value='Used by SHR+ to kick members from the Discord server.', inline=True)
+	embed.add_field(name='ban', value='Used by SSHR to ban members from the Discord server.', inline=True)
 	embed.set_footer(text='Made by manslo.')
 
 	await client.say( 'Check your DMs.')
