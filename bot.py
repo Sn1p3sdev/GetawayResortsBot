@@ -8,7 +8,7 @@ from itertools import cycle
 
 TOKEN = 'NTE5NjU2NTM4MDM0NDA1Mzk3.Duifaw.Peoy1GOMWO9SCW_yQfiGKxNyWio'
 client = commands.Bot(command_prefix = 'GR!')
-status = ['at Getaway Resorts', 'with iifluxi', 'with zultra500', 'with manslo', 'with iiPokiesi']
+status = ['at Getaway Resorts', 'with iifluxi', 'with zultra500', 'with manslo', 'with BabySage']
 client.remove_command('help')
 
 #cool loopy stuff
@@ -281,9 +281,15 @@ async def apply(ctx, arg1, arg2):
 	embed.set_author(name='Getaway Resorts')
 	embed.set_thumbnail(url='https://cdn.discordapp.com/app-icons/519656538034405397/cc0c1d9876df2948228391f3ea1f8167.png')
 	embed.add_field(name='ROBLOX username:', value=(arg1))
+	if arg2 == 'security' or 'Security' or 'Security Guard' or 'security guard':
+		embed.add_field(name='Job being applied for:', value=(arg2))
+	if arg2 == 'receptionist' or 'Receptionist' or 'front desk' or 'Front Desk'
+		embed.add_field(name='Job being applied for:', value=(arg2))
+	else:
+		embed.add_field(name='Job being applied for:' value='The job you applied for is invalid. Please apply for either Security or Receptionist.')
 	embed.add_field(name='Job being applied for:', value=(arg2))
 	embed.set_footer(text='Made by manslo.')
-	
+
 	await client.say(embed=embed)
 @client.event
 async def on_message_delete():
