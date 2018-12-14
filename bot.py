@@ -18,7 +18,7 @@ async def change_playing_status():
 	msgs = cycle(status)
 	while not client.is_closed:
 		current_status = next(msgs)
-		await client.change_presence(game=discord.Game(name=current_status, type = 3))
+		await client.change_presence(game=discord.Game(name=current_status, url="https://www.twitch.tv/Sn1p3sdev" ,type = 1))
 		await asyncio.sleep(5)
 #E V E N T S ! ! !
 
