@@ -283,6 +283,8 @@ async def apply(ctx, arg1, arg2):
 	embed.add_field(name='ROBLOX username:', value=(arg1))
 	embed.add_field(name='Job being applied for:', value=(arg2))
 	embed.set_footer(text='Made by manslo.')
+	
+	await client.say(embed=embed)
 @client.event
 async def on_message_delete():
 	author = message.author
