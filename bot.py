@@ -286,7 +286,7 @@ async def apply(ctx, arg1, arg2):
 	if arg2 == 'receptionist' or 'Receptionist' or 'front desk' or 'Front Desk':
 		embed.add_field(name='Job being applied for:', value=(arg2))
 	else:
-		embed.add_field(name='Job being applied for:' value='The job you applied for is invalid.')
+		embed.add_field(name='Job being applied for:', value='The job you applied for is invalid.You can apply for Security or Receptionist though!')
 	embed.set_footer(text='Made by manslo.')
 
 	await client.say(embed=embed)
