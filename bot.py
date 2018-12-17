@@ -8,7 +8,8 @@ from itertools import cycle
 
 TOKEN = 'NTE5NjU2NTM4MDM0NDA1Mzk3.Duifaw.Peoy1GOMWO9SCW_yQfiGKxNyWio'
 client = commands.Bot(command_prefix = 'GR!')
-status = ['at Getaway Resorts', 'with iifluxi', 'with zultra500', 'with manslo', 'with BabySage', 'with Caleb']
+status = ['to what the people want.']
+#status = ['at Getaway Resorts', 'with iifluxi', 'with zultra500', 'with manslo', 'with BabySage']
 client.remove_command('help')
 
 #cool loopy stuff
@@ -18,7 +19,7 @@ async def change_playing_status():
 	msgs = cycle(status)
 	while not client.is_closed:
 		current_status = next(msgs)
-		await client.change_presence(game=discord.Game(name=current_status, url="https://www.twitch.tv/Sn1p3sdev" ,type = 1))
+		await client.change_presence(game=discord.Game(name=current_status, url="https://www.twitch.tv/Sn1p3sdev" ,type = 2))#1 for streaming. I think...
 		await asyncio.sleep(5)
 #E V E N T S ! ! !
 
@@ -218,12 +219,6 @@ async def help(ctx):
 	embed.add_field(name='info', value='Tells you all about the bot.', inline=True)
 	embed.add_field(name='help', value='Shows all the commands that you are able to use.', inline=True)
 	embed.add_field(name='gift', value='Shows the information about this gift.', inline=True)
-	embed.add_field(name='training', value='Used to announce trainings.', inline=True)
-	embed.add_field(name='interviews', value='Used to annouce interviews.', inline=True)
-	embed.add_field(name='apply', value='Used by guests to apply for a job here at Getaway Resorts.', inline=True)
-	embed.add_field(name='mute', value='Used by HR+ to mute members who spam or break the rules of Getaway Resorts.', inline=True)
-	embed.add_field(name='kick', value='Used by SHR+ to kick members from the Discord server.', inline=True)
-	embed.add_field(name='ban', value='Used by SSHR to ban members from the Discord server.', inline=True)
 	embed.set_footer(text='Made by manslo.')
 
 	await client.say( 'Check your DMs.')
@@ -289,10 +284,11 @@ async def apply(ctx, arg1, arg2):
 	embed.add_field(name='ROBLOX username:', value=(arg1))
 	if arg2 == 'security' or 'Security' or 'Security Guard' or 'security guard':
 		embed.add_field(name='Job being applied for:', value=(arg2))
-	if arg2 == 'receptionist' or 'Receptionist' or 'front desk' or 'Front Desk':
+	if arg2 == 'receptionist' or 'Receptionist' or 'front desk' or 'Front Desk'
 		embed.add_field(name='Job being applied for:', value=(arg2))
 	else:
-		embed.add_field(name='Job being applied for:', value='The job you applied for is invalid.You can apply for Security or Receptionist though!')
+		embed.add_field(name='Job being applied for:', value='The job you applied for is invalid. Please apply for either Security or Receptionist.')
+	embed.add_field(name='Job being applied for:', value=(arg2))
 	embed.set_footer(text='Made by manslo.')
 
 	await client.say(embed=embed)
