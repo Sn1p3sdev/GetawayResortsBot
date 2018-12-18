@@ -124,8 +124,8 @@ async def kick(ctx, member: discord.Member=None):
 		await client.say("Please specify a member.")
 		return
 	else:
-	await member.kick()
-	await client.say(f"{member.mention} has been kicked.")
+		await member.kick()
+		await client.say(f"{member.mention} has been kicked.")
 
 @client.command()
 async def ban(ctx, member: discord.Member=None):
