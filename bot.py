@@ -144,7 +144,7 @@ async def mute(ctx, member: discord.Member=None):
 	await ctx.send(f"{member.mention} has been muted!")
 
 @client.command()
-async def unmute(ctx, discord.Member=None):
+async def unmute(ctx, member: discord.Member=None):
 	role = discord.utils.get(ctx.guild.roles, name="G.R Muted")
 	if not member:
 		await ctx.say("Please specify a member.")
