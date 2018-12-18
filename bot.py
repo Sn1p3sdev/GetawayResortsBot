@@ -120,9 +120,6 @@ async def clear(ctx, amount=1000):
 
 @client.command()
 async def kick(ctx, member: discord.Member=None):
-	if not member:
-		await client.say("Please specify a member.")
-		return
 	await member.kick()
 	await client.say(f"{member.mention} has been kicked.")
 
