@@ -168,12 +168,7 @@ async def leave(ctx):
 async def logout(ctx):
     if ctx.message.author == "Sn1p3sdev" or "manslo":
         await client.logout()
-        client.say("Shutting down...")
-        print("{} has initiated a complete shut down of the bot. Shutting down now.".format(ctx.message.author))
-    else:
-        client.say("You do not have the perms to preform a shutdown.")
-        print("{} has insufficient perms to preform a shutdown.".format(ctx.message.author))
-
+        
 @client.command()
 async def info():
 	embed = discord.Embed(
