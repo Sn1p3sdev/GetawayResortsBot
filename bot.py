@@ -118,30 +118,41 @@ async def clear(ctx, amount=1000):
 	await client.say('Messages deleted.')
 	print('Command "clear" has been run. Messages have been deleted.')
 
-@client.command(pass_context=True)
-async def mute(ctx, member: discord.Member):
-	if ctx.message.author.server_permissions.administrator or ctx.message.author.id == '194151340090327041':
-		role = discord.utils.get(member.server.roles, name='G.R Muted')
-		await bot.add_roles(member, role)
-		embed=discord.Embed(title="User Muted!", description="**{0}** was muted by **{1}**!".format(member, ctx.message.author), color=0xff00f6)
-		await bot.say(embed=embed)
-
 @client.command()
 async def kick(ctx, member: discord.Member=None):
 	if not member:
-		await ctx.send('{} Please specify a member.'.format(ctx.message.author.mention))
+		await ctx.say("Please specify a member.")
 		return
 	await member.kick()
-	await ctx.send(f'{member.mention} has been kicked.')
+	await ctx.send(f"{member.mention} has been kicked.")
 
 @client.command()
 async def ban(ctx, member: discord.Member=None):
 	if not member:
-		await ctx.send('{} Please specify a member.'.format(ctx.message.author.mention))
+		await ctx.say("Please specify a member.")
 		return
 	await member.ban()
-	await ctx.send(f'{member.mention} has been banned.')
+	await ctx.send(f"{member.mention} has been banned.")
 
+@client.command()
+async def mute(ctx, member: discord.Member=None):
+	role = discord.utils.get(ctx.guild.roles, name="G.R Muted")
+	if not member:
+		await ctx.send("Please specify a member.")
+		return
+	await member.add_roles(role)
+	await ctx.send(f"{member.mention} has been muted!")
+
+@client.command()
+async def unmute(ctx, dicord.Member=None):
+	role = discord.utils.get(ctx.guild.roles, name="G.R Muted")
+	if not member:
+		await ctx.say("Please specify a member.")
+		return
+	await member.remove_roles(role)
+	await ctx.send(f"{member.mention} has been unmuted.")
+	await ctx.send("Make sure to watch out for them though!!!")
+	
 #music commands
 @client.command(pass_context=True)
 async def join(ctx):
@@ -288,10 +299,11 @@ async def apply(ctx, arg1, arg2):
 		embed.add_field(name='Job being applied for:', value=(arg2))
 	else:
 		embed.add_field(name='Job being applied for:', value='The job you applied for is invalid. Please apply for either Security or Receptionist.')
-	embed.add_field(name='Job being applied for:', value=(arg2))
 	embed.set_footer(text='Made by manslo.')
 
 	await client.say(embed=embed)
+
+@client.command()
 @client.event
 async def on_message_delete():
 	author = message.author
