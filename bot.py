@@ -121,7 +121,7 @@ async def clear(ctx, amount=1000):
 @client.command()
 async def kick(ctx, member: discord.Member=None):
 	if not member:
-		await ctx.say("Please specify a member.")
+		await ctx.send("Please specify a member.")
 		return
 	await member.kick()
 	await ctx.send(f"{member.mention} has been kicked.")
@@ -129,7 +129,7 @@ async def kick(ctx, member: discord.Member=None):
 @client.command()
 async def ban(ctx, member: discord.Member=None):
 	if not member:
-		await ctx.say("Please specify a member.")
+		await ctx.send("Please specify a member.")
 		return
 	await member.ban()
 	await ctx.send(f"{member.mention} has been banned.")
@@ -147,7 +147,7 @@ async def mute(ctx, member: discord.Member=None):
 async def unmute(ctx, member: discord.Member=None):
 	role = discord.utils.get(ctx.guild.roles, name="G.R Muted")
 	if not member:
-		await ctx.say("Please specify a member.")
+		await ctx.send("Please specify a member.")
 		return
 	await member.remove_roles(role)
 	await ctx.send(f"{member.mention} has been unmuted.")
