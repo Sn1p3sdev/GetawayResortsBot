@@ -121,37 +121,37 @@ async def clear(ctx, amount=1000):
 @client.command()
 async def kick(ctx, member: discord.Member=None):
 	if not member:
-		await client.send("Please specify a member.")
+		await client.say("Please specify a member.")
 		return
 	await member.kick()
-	await client.send(f"{member.mention} has been kicked.")
+	await client.say(f"{member.mention} has been kicked.")
 
 @client.command()
 async def ban(ctx, member: discord.Member=None):
 	if not member:
-		await client.send("Please specify a member.")
+		await client.say("Please specify a member.")
 		return
 	await member.ban()
-	await client.send(f"{member.mention} has been banned.")
+	await client.say(f"{member.mention} has been banned.")
 
 @client.command()
 async def mute(ctx, member: discord.Member=None):
 	role = discord.utils.get(ctx.guild.roles, name="G.R Muted")
 	if not member:
-		await client.send("Please specify a member.")
+		await client.say("Please specify a member.")
 		return
 	await member.add_roles(role)
-	await client.send(f"{member.mention} has been muted!")
+	await client.say(f"{member.mention} has been muted!")
 
 @client.command()
 async def unmute(ctx, member: discord.Member=None):
 	role = discord.utils.get(ctx.guild.roles, name="G.R Muted")
 	if not member:
-		await client.send("Please specify a member.")
+		await client.say("Please specify a member.")
 		return
 	await member.remove_roles(role)
-	await client.send(f"{member.mention} has been unmuted.")
-	await client.send("Make sure to watch out for them though!!!")
+	await client.say(f"{member.mention} has been unmuted.")
+	await client.say("Make sure to watch out for them though!!!")
 
 #music commands
 @client.command(pass_context=True)
