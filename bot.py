@@ -123,6 +123,7 @@ async def kick(ctx, member: discord.Member=None):
 	if not member:
 		await client.say("Please specify a member.")
 		return
+	else:
 	await member.kick()
 	await client.say(f"{member.mention} has been kicked.")
 
