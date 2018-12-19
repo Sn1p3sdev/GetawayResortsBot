@@ -31,7 +31,7 @@ async def on_ready():
 
 @client.event
 async def on_message(message):
-	print('A user has sent a message.')
+	print('{}/{}: {}'.format(message.author.id, message.author.name, message))
 	await client.process_commands(message)
 
 @client.event
