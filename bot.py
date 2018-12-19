@@ -8,8 +8,8 @@ from itertools import cycle
 
 TOKEN = 'NTE5NjU2NTM4MDM0NDA1Mzk3.Duifaw.Peoy1GOMWO9SCW_yQfiGKxNyWio'
 client = commands.Bot(command_prefix = 'GR!')
-status = ['to what the people want.']
-#status = ['at Getaway Resorts', 'with iifluxi', 'with zultra500', 'with manslo', 'with BabySage']
+#status = ['to what the people want.']
+status = ['at Getaway Resorts', 'with iifluxi', 'with zultra500', 'with manslo', 'with BabySage']
 client.remove_command('help')
 
 #cool loopy stuff
@@ -19,7 +19,7 @@ async def change_playing_status():
 	msgs = cycle(status)
 	while not client.is_closed:
 		current_status = next(msgs)
-		await client.change_presence(game=discord.Game(name=current_status, url="https://www.twitch.tv/Sn1p3sdev" ,type = 2))#1 for streaming. I think...
+		await client.change_presence(game=discord.Game(name=current_status, url="https://www.twitch.tv/Sn1p3sdev"))#1 for streaming. I think...
 		await asyncio.sleep(5)
 #E V E N T S ! ! !
 
@@ -166,7 +166,7 @@ async def unmute(ctx, member: discord.Member=None):
 #other commands
 @client.command()
 async def logout(ctx):
-	if author.id == "401571142302957568" or "502950216018821120" or "498671094031581215" or "437674634532487188":
+	if ctx.message.author.id == "401571142302957568" or "502950216018821120" or "498671094031581215" or "437674634532487188":
 		print('{} has initiated a complete shutdown of the bot.'.format(ctx.message.author.mention))
 		print('Shutting down.')
 		client.send('{} has initiated a complete shutdown of the bot.'.format(ctx.message.author.mention))
