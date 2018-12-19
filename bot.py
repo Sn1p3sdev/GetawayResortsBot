@@ -166,7 +166,7 @@ async def leave(ctx):
 #other commands
 @client.command()
 async def logout(ctx):
-    if ctx.message.author == "Sn1p3sdev" or "manslo":
+    #if ctx.message.author == "Sn1p3sdev" or "manslo":
         await client.logout()
         
 @client.command()
