@@ -165,18 +165,18 @@ async def leave(ctx):
 	print('Left voice channel: {}'.format(voice_client))
 #other commands
 @client.command()
-async def logout():
+async def logout(ctx):
 	if author.id == "401571142302957568" or "502950216018821120" or "498671094031581215" or "437674634532487188":
-		print('{} has initiated a complete shutdown of the bot.'.format(author.mention))
+		print('{} has initiated a complete shutdown of the bot.'.format(ctx.message.author.mention))
 		print('Shutting down.')
-		client.send('{} has initiated a complete shutdown of the bot.'.format(author.mention))
+		client.send('{} has initiated a complete shutdown of the bot.'.format(ctx.message.author.mention))
 		client.send('Shutting down.')
 		await client.logout()
 	else:
-		print('{} has tried to initiate a shutdown.'.format(author.mention))
+		print('{} has tried to initiate a shutdown.'.format(ctx.message.author.mention))
 		print('They however, do not have the perms to do so.')
-		client.send('{} has tried to initiate a shutdown.'.format(author.mention))
-		client.send('However, {} is not one of the members that can shutdown this bot.'.format(author.mention))
+		client.send('{} has tried to initiate a shutdown.'.format(ctx.message.author.mention))
+		client.send('However, {} is not one of the members that can shutdown this bot.'.format(ctx.message.author.mention))
 		client.send('**EXPOSED!!!** lol')
 
 @client.command()
