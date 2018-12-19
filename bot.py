@@ -151,18 +151,18 @@ async def unmute(ctx, member: discord.Member=None):
 	await client.say("Make sure to watch out for them though!!!")
 
 #music commands
-@client.command(pass_context=True)
-async def join(ctx):
-	channel = ctx.message.author.voice.voice_channel
-	await client.join_voice_channel(channel)
-	print('Joined voice channel: {}'.format(channel))
+#@client.command(pass_context=True)
+#async def join(ctx):
+#	channel = ctx.message.author.voice.voice_channel
+#	await client.join_voice_channel(channel)
+#	print('Joined voice channel: {}'.format(channel))
 
-@client.command(pass_context=True)
-async def leave(ctx):
-	server = ctx.message.server
-	voice_client = client.voice_client_in(server)
-	await voice_client.disconnect()
-	print('Left voice channel: {}'.format(voice_client))
+#@client.command(pass_context=True)
+#async def leave(ctx):
+#	server = ctx.message.server
+#	voice_client = client.voice_client_in(server)
+#	await voice_client.disconnect()
+#	print('Left voice channel: {}'.format(voice_client))
 #other commands
 @client.command()
 async def logout(ctx):
