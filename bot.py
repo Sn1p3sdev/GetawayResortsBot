@@ -165,8 +165,8 @@ async def unmute(ctx, member: discord.Member=None):
 #	print('Left voice channel: {}'.format(voice_client))
 #other commands
 @client.command()
-async def logout(ctx):
-	if ctx.message.author.id == "401571142302957568" or "502950216018821120" or "498671094031581215" or "437674634532487188":
+async def logout(message):
+	if message.author.id == "401571142302957568" or "502950216018821120" or "498671094031581215" or "437674634532487188":
 		print('{} has initiated a complete shutdown of the bot.'.format(ctx.message.author.mention))
 		print('Shutting down.')
 		client.send('{} has initiated a complete shutdown of the bot.'.format(ctx.message.author.mention))
