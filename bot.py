@@ -165,10 +165,10 @@ async def leave(ctx):
 	print('Left voice channel: {}'.format(voice_client))
 #other commands
 @client.command()
-async def logout(ctx):
-    #if ctx.message.author == "Sn1p3sdev" or "manslo":
-        await client.logout()
-        
+async def logout():
+	if author.id == "401571142302957568" or "502950216018821120" or "498671094031581215" or "437674634532487188":
+	await client.logout()
+
 @client.command()
 async def info():
 	embed = discord.Embed(
